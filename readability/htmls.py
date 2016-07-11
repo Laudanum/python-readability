@@ -122,3 +122,11 @@ def get_body(doc):
     except Exception: #FIXME find the equivalent lxml error
         #logging.error("cleansing broke html content: %s\n---------\n%s" % (raw_html, cleaned))
         return raw_html
+
+def get_main_image_url(doc):
+    images = get_images(doc)
+    if len(images):
+        return images[0].get('src')
+
+def get_images(doc):
+    return doc.findall('.//img')

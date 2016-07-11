@@ -16,6 +16,7 @@ from .htmls import build_doc
 from .htmls import get_body
 from .htmls import get_title
 from .htmls import shorten_title
+from .htmls import get_main_image_url
 from .compat import str_
 from .debug import describe, text_content
 
@@ -138,6 +139,9 @@ class Document:
 
     def short_title(self):
         return shorten_title(self._html(True))
+
+    def main_image_url(self):
+        return get_main_image_url(self._html(True))
 
     def get_clean_html(self):
          return clean_attributes(tounicode(self.html))
